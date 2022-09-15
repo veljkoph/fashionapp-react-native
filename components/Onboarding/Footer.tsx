@@ -3,18 +3,18 @@ import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { data } from "../../data";
 import Animated, {
-  Easing,
   useAnimatedStyle,
-  withDecay,
-  withSpring,
   withTiming,
 } from "react-native-reanimated";
+import { useNavigation } from "@react-navigation/native";
 
 type Props = {
   activeSlide: number;
 };
 
 const Footer = (props: Props) => {
+  const navigation = useNavigation();
+
   const sliderIndicatorStyle = (id: number) =>
     useAnimatedStyle(() => {
       return {
@@ -48,7 +48,10 @@ const Footer = (props: Props) => {
           ></Animated.View>
         ))}
       </View>
-      <TouchableOpacity style={styles.btn}>
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => navigation.navigate("Registration")}
+      >
         <Ionicons name="chevron-forward-outline" size={31} color="white" />
       </TouchableOpacity>
     </View>

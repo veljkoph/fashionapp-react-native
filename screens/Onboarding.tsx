@@ -10,8 +10,7 @@ import Footer from "../components/Onboarding/Footer";
 const shuffle = (data: any) => [...data].sort(() => Math.random() - 0.5);
 const { width } = Dimensions.get("window");
 
-const Onboarding = () => {
-  const scrollViewRef = useRef<ScrollView>(null);
+const Onboarding = ({}) => {
   const [activeSlide, setActiveSlide] = useState<number>(1);
 
   return (
