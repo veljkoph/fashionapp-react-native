@@ -63,6 +63,11 @@ const Slide = ({ title, image, right, subtitle }: SlideProps) => {
         source={require("../../assets/gradient.png")}
         style={{ width: "100%", height: "100%", position: "absolute" }}
       />
+      {/* <ImageBlurLoading
+        thumbnailSource={{ uri: "https://picsum.photos/id/1/50/50" }}
+        source={{ uri: "https://picsum.photos/id/1/1000/1000" }}
+      style={{ width: "100%", height: "100%", position: "absolute" }}
+      /> */}
     </View>
   );
 };

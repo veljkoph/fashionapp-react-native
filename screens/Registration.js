@@ -13,6 +13,7 @@ const Registration = () => {
         <Social text="Continue with Apple" image={apple} />
         <Social text="Sign in with Google" image={google} />
         <Social text="Sign in with email" image={mail} />
+        <Social text="Enter as Guest" />
       </View>
     </View>
   );

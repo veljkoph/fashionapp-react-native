@@ -7,13 +7,16 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../navigation/Navigation";
 
 type Props = {
   activeSlide: number;
 };
 
 const Footer = (props: Props) => {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const sliderIndicatorStyle = (id: number) =>
     useAnimatedStyle(() => {

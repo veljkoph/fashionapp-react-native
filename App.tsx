@@ -16,7 +16,14 @@ export default function App() {
     "Cabin-Regular": require("./assets/fonts/Cabin-Regular.ttf"),
   });
 
-  if (!loaded) return <ActivityIndicator size="large" />;
+  if (!loaded)
+    return (
+      // <ActivityIndicator
+      //   size="large"
+      //   style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+      // />
+      null
+    );
   return (
     <View style={styles.container}>
       <StatusBar hidden />
