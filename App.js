@@ -1,4 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
@@ -15,7 +16,7 @@ export default function App() {
     "Cormorant-Bold": require("./assets/fonts/Cormorant-Bold.ttf"),
     "Cabin-Regular": require("./assets/fonts/Cabin-Regular.ttf"),
   });
-
+  const queryClient = new QueryClient();
   if (!loaded)
     return (
       // <ActivityIndicator
@@ -27,7 +28,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar hidden />
-      <Navigation />
+
+      <QueryClientProvider client={queryClient}>
+        <Navigation />
+      </QueryClientProvider>
     </View>
   );
 }

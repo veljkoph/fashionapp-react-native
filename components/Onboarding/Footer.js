@@ -10,15 +10,10 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../navigation/Navigation";
 
-type Props = {
-  activeSlide: number;
-};
+const Footer = (props) => {
+  const navigation = useNavigation();
 
-const Footer = (props: Props) => {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-
-  const sliderIndicatorStyle = (id: number) =>
+  const sliderIndicatorStyle = (id) =>
     useAnimatedStyle(() => {
       return {
         width: withTiming(id === props.activeSlide ? 40 : 17, {

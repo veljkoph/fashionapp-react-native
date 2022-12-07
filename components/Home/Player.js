@@ -6,7 +6,7 @@ import Actions from "./Actions";
 const { width, height } = Dimensions.get("window");
 export const SLIDE_HEIGHT = height;
 
-const Player = ({ url, activeSlide, id }) => {
+const Player = ({ url, activeSlide, id, image }) => {
   const [status, setStatus] = React.useState({});
   const video = React.useRef(null);
   const styles = StyleSheet.create({
@@ -27,10 +27,10 @@ const Player = ({ url, activeSlide, id }) => {
         useNativeControls={false}
         resizeMode="cover"
         isLooping
-        shouldPlay={activeSlide == id}
+        shouldPlay={true}
         onPlaybackStatusUpdate={(status) => setStatus(() => status)}
       />
-      <Actions />
+      <Actions uri={image} />
     </View>
   );
 };

@@ -7,11 +7,11 @@ import Animated from "react-native-reanimated";
 import { data } from "../data";
 import Footer from "../components/Onboarding/Footer";
 
-const shuffle = (data: any) => [...data].sort(() => Math.random() - 0.5);
+const shuffle = (data) => [...data].sort(() => Math.random() - 0.5);
 const { width } = Dimensions.get("window");
 
 const Onboarding = ({}) => {
-  const [activeSlide, setActiveSlide] = useState<number>(1);
+  const [activeSlide, setActiveSlide] = useState(1);
 
   return (
     <View style={styles.container}>

@@ -3,6 +3,7 @@ import React from "react";
 import { Video, AVPlaybackStatus } from "expo-av";
 import Player from "../components/Home/Player";
 import Animated from "react-native-reanimated";
+import useVideos from "../hooks/videos/useVideos";
 //pexels key 563492ad6f9170000100000146c3f93930a7407ea678dbcc8f1ad5de
 const data = [
   {
@@ -28,6 +29,9 @@ const Home = () => {
   const [activeSlide, setActiveSlide] = React.useState(1);
   const { height } = Dimensions.get("screen");
   const [status, setStatus] = React.useState({});
+
+  const { data: videos, isLoading } = useVideos();
+  if (isLoading) return null;
   return (
     <Animated.View style={{ height: height }}>
       <ScrollView
@@ -42,9 +46,18 @@ const Home = () => {
           setActiveSlide(event.nativeEvent.contentOffset.y / height + 1)
         }
       >
-        {data.map(({ url, id }) => (
-          <Player key={id} activeSlide={activeSlide} id={id} url={url} />
-        ))}
+        {videos?.map(
+          ({ videos, _id, image }) =>
+            videos && (
+              <Player
+                key={_id}
+                activeSlide={activeSlide}
+                id={_id}
+                url={videos}
+                image={image}
+              />
+            )
+        )}
       </ScrollView>
     </Animated.View>
   );

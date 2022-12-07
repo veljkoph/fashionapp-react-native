@@ -6,12 +6,7 @@ import Registration from "../screens/Registration";
 import Home from "../screens/Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-export type RootStackParamList = {
-  Onboarding: undefined;
-  Registration: undefined;
-  Home: undefined;
-};
-const Stack = createBottomTabNavigator<RootStackParamList>();
+const Stack = createBottomTabNavigator();
 
 const Navigation = () => {
   return (

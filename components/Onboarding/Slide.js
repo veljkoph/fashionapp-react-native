@@ -1,18 +1,12 @@
 import { View, Text, StyleSheet, Dimensions, Image } from "react-native";
 import React, { useRef, useState } from "react";
 
-interface SlideProps {
-  title: string;
-  image: string;
-  right?: boolean;
-  subtitle: string;
-}
 const { width, height } = Dimensions.get("window");
 export const SLIDE_HEIGHT = height;
 
-const Slide = ({ title, image, right, subtitle }: SlideProps) => {
-  const titleRef = useRef<any>();
-  const [titleWidth, setTitleWidth] = useState<number>(0);
+const Slide = ({ title, image, right, subtitle }) => {
+  const titleRef = useRef();
+  const [titleWidth, setTitleWidth] = useState(0);
 
   const styles = StyleSheet.create({
     container: {
@@ -52,7 +46,7 @@ const Slide = ({ title, image, right, subtitle }: SlideProps) => {
         style={styles.titleContainer}
         ref={titleRef}
         onLayout={() => {
-          titleRef.current?.measure((height: number) => {
+          titleRef.current?.measure((height) => {
             setTitleWidth(height);
           });
         }}
