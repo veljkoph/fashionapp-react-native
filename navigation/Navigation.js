@@ -14,6 +14,7 @@ const Navigation = () => {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
+          tabBarStyle: { position: "absolute", backgroundColor: "#2F2F2F" },
         }}
       >
         <Stack.Screen name="Onboarding" component={Onboarding} />

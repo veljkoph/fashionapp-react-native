@@ -4,6 +4,8 @@ import { Video, AVPlaybackStatus } from "expo-av";
 import Player from "../components/Home/Player";
 import Animated from "react-native-reanimated";
 import useVideos from "../hooks/videos/useVideos";
+import FashionLoader from "./Global/FashionLoader";
+import Error from "./Global/Error";
 //pexels key 563492ad6f9170000100000146c3f93930a7407ea678dbcc8f1ad5de
 const data = [
   {
@@ -30,8 +32,8 @@ const Home = () => {
   const { height } = Dimensions.get("screen");
   const [status, setStatus] = React.useState({});
 
-  const { data: videos, isLoading } = useVideos();
-  if (isLoading) return null;
+  const { data: videos, isLoading, error } = useVideos();
+  if (error) return <Error />;
   return (
     <Animated.View style={{ height: height }}>
       <ScrollView
