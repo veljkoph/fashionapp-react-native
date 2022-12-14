@@ -4,8 +4,9 @@ import { useNavigation } from "@react-navigation/native";
 
 const Social = (props) => {
   const navigation = useNavigation();
+  //      onPress={() => navigation.navigate("App", { screen: "Home" })}
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+    <TouchableOpacity onPress={() => navigation.navigate("Register")}>
       <View style={styles.container}>
         <Image resizeMode="contain" style={styles.image} source={props.image} />
         <Text style={styles.text}>{props.text}</Text>

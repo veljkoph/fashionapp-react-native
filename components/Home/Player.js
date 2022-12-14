@@ -9,6 +9,7 @@ export const SLIDE_HEIGHT = height;
 const Player = ({ url, activeSlide, id, image }) => {
   const [status, setStatus] = React.useState({});
   const video = React.useRef(null);
+
   const styles = StyleSheet.create({
     container: {
       width: width,

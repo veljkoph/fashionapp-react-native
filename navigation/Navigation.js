@@ -5,22 +5,40 @@ import Onboarding from "../screens/Onboarding";
 import Registration from "../screens/Registration";
 import Home from "../screens/Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Profile from "../screens/Profile/Profile";
+import Register from "../screens/Auth/Register";
 
-const Stack = createBottomTabNavigator();
+const TabNavigator = createBottomTabNavigator();
+const StackNavigator = createNativeStackNavigator();
+
+const TabStack = () => {
+  return (
+    <TabNavigator.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: { position: "absolute", backgroundColor: "#2F2F2F" },
+      }}
+    >
+      <TabNavigator.Screen name="Home" component={Home} />
+      <TabNavigator.Screen name="Profile" component={Profile} />
+    </TabNavigator.Navigator>
+  );
+};
 
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
+      <StackNavigator.Navigator
         screenOptions={{
           headerShown: false,
           tabBarStyle: { position: "absolute", backgroundColor: "#2F2F2F" },
         }}
       >
-        <Stack.Screen name="Onboarding" component={Onboarding} />
-        <Stack.Screen name="Registration" component={Registration} />
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator>
+        <StackNavigator.Screen name="Onboarding" component={Onboarding} />
+        <StackNavigator.Screen name="Registration" component={Registration} />
+        <StackNavigator.Screen name="Register" component={Register} />
+        <StackNavigator.Screen name="App" component={TabStack} />
+      </StackNavigator.Navigator>
     </NavigationContainer>
   );
 };
