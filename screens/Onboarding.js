@@ -1,9 +1,8 @@
-import { View, Text, ScrollView, StyleSheet, Dimensions } from "react-native";
-import React, { useEffect, useRef, useState } from "react";
+import { View, ScrollView, StyleSheet, Dimensions } from "react-native";
+import React, { useState } from "react";
 import Slide from "../components/Onboarding/Slide";
 import { SLIDE_HEIGHT } from "../components/Onboarding/Slide";
 import Animated from "react-native-reanimated";
-
 import { data } from "../data";
 import Footer from "../components/Onboarding/Footer";
 

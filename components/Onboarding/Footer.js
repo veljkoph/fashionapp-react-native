@@ -7,8 +7,6 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../navigation/Navigation";
 
 const Footer = (props) => {
   const navigation = useNavigation();

@@ -33,7 +33,7 @@ const Profile = () => {
       <FlatList
         ListHeaderComponent={<Header />}
         style={{ backgroundColor: Colors.background }}
-        contentContainerStyle={{ paddingBottom: 40 }}
+        contentContainerStyle={{ paddingBottom: 0 }}
         data={videos}
         numColumns={2}
         renderItem={({ item }) => <ListItem video={item} />}

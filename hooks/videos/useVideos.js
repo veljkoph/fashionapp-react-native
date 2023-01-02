@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 //import { BASE_URL } from "@env";
 
 const fetchFunction = async () => {
-  const data = await axios.get(`http://192.168.0.109:3000/users/`);
+  const data = await axios.get(`http://192.168.0.34:3000/posts/`);
   return data?.data;
 };
 

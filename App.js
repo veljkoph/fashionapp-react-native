@@ -1,10 +1,8 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import Navigation from "./navigation/Navigation";
-import Onboarding from "./screens/Onboarding";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -28,7 +26,6 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar hidden />
-
       <QueryClientProvider client={queryClient}>
         <Navigation />
       </QueryClientProvider>

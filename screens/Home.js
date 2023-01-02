@@ -33,7 +33,9 @@ const Home = () => {
   const [status, setStatus] = React.useState({});
 
   const { data: videos, isLoading, error } = useVideos();
+  console.log(videos?.length);
   if (error) return <Error />;
+  if (isLoading) return <FashionLoader />;
   return (
     <Animated.View style={{ height: height }}>
       <ScrollView
@@ -49,13 +51,13 @@ const Home = () => {
         }
       >
         {videos?.map(
-          ({ videos, _id, image }) =>
+          ({ url, _id, image }) =>
             videos && (
               <Player
                 key={_id}
                 activeSlide={activeSlide}
                 id={_id}
-                url={videos}
+                url={url}
                 image={image}
               />
             )
