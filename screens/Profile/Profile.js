@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../../components/Profile/Header";
 import { Colors } from "../../constants/colors";
 import ListItem from "../../components/Profile/ListItem";
-
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 const videos = [
   {
     id: 1,
@@ -28,8 +28,16 @@ const videos = [
 ];
 
 const Profile = () => {
+  const insets = useSafeAreaInsets();
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: Colors.background,
+        paddingTop: insets.top + 10,
+      }}
+    >
       <FlatList
         ListHeaderComponent={<Header />}
         style={{ backgroundColor: Colors.background }}
@@ -38,7 +46,7 @@ const Profile = () => {
         numColumns={2}
         renderItem={({ item }) => <ListItem video={item} />}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

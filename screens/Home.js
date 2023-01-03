@@ -6,6 +6,7 @@ import Animated from "react-native-reanimated";
 import useVideos from "../hooks/videos/useVideos";
 import FashionLoader from "./Global/FashionLoader";
 import Error from "./Global/Error";
+import { Colors } from "../constants/colors";
 //pexels key 563492ad6f9170000100000146c3f93930a7407ea678dbcc8f1ad5de
 const data = [
   {
@@ -39,7 +40,7 @@ const Home = () => {
   return (
     <Animated.View style={{ height: height }}>
       <ScrollView
-        style={{ backgroundColor: "#BABABA" }}
+        style={{ backgroundColor: Colors.background }}
         directionalLockEnabled={true}
         snapToInterval={height}
         decelerationRate="fast"
@@ -51,14 +52,16 @@ const Home = () => {
         }
       >
         {videos?.map(
-          ({ url, _id, image }) =>
+          (video, index) =>
             videos && (
               <Player
-                key={_id}
+                video={video}
+                key={video._id}
                 activeSlide={activeSlide}
-                id={_id}
-                url={url}
-                image={image}
+                id={video._id}
+                url={video.url}
+                image={video.image}
+                index={index}
               />
             )
         )}
