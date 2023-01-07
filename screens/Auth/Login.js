@@ -12,15 +12,15 @@ import TransparentInput from "../../components/Global/TransparentInput";
 import { Colors } from "../../constants/colors";
 import CTABtn from "../../components/Global/CTABtn";
 import { Formik } from "formik";
-import { RegisterSchema } from "../../constants/validations/RegisterSchema";
-import useRegister from "../../hooks/auth/useRegister";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import LoaderModal from "../../components/Global/LoaderModal";
 import HeaderWIthTitle from "../../components/Global/HeaderWIthTitle";
 import { useNavigation } from "@react-navigation/native";
+import { LoginSchema } from "../../constants/validations/LoginSchema";
+import useLogin from "../../hooks/auth/useLogin";
 
-const Register = () => {
-  const { mutate: register, error, isLoading } = useRegister();
+const Login = () => {
+  const { mutate: login, error, isLoading } = useLogin();
   const navigation = useNavigation();
   return (
     <SafeAreaView
@@ -31,18 +31,18 @@ const Register = () => {
         paddingTop: Platform.OS === "android" ? 45 : 0,
       }}
     >
-      <HeaderWIthTitle title={isLoading ? "Loading" : "Register"} />
+      <HeaderWIthTitle title={isLoading ? "Loading" : "Login"} />
       <TouchableOpacity
         style={styles.switchBtn}
-        onPress={() => navigation.navigate("Login")}
+        onPress={() => navigation.navigate("Register")}
       >
         <Text style={styles.text}>
-          Have account? <Text style={styles.underline}>Login</Text>
+          Dont have an account? <Text style={styles.underline}>Register</Text>
         </Text>
       </TouchableOpacity>
 
       <KeyboardAwareScrollView
-        contentContainerStyle={{ paddingTop: 30 }}
+        contentContainerStyle={{ paddingTop: 60 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         resetScrollToCoords={{ x: 0, y: 0 }}
         scrollEnabled={true}
@@ -53,16 +53,14 @@ const Register = () => {
 
         <ScrollView contentContainerStyle={styles.container}>
           <Formik
-            validationSchema={RegisterSchema}
+            validationSchema={LoginSchema}
             initialValues={{
-              email: "",
               password: "",
-              confirm_password: "",
               username: "",
             }}
             onSubmit={(values) => {
               console.log(values);
-              register(values);
+              login(values);
             }}
           >
             {(props) => (
@@ -75,14 +73,7 @@ const Register = () => {
                   onBlur={props.handleBlur("username")}
                   touched={props.touched.username}
                 />
-                <TransparentInput
-                  onChangeText={props.handleChange("email")}
-                  value={props.values.email}
-                  label="email"
-                  error={props.errors.email}
-                  onBlur={props.handleBlur("email")}
-                  touched={props.touched.email}
-                />
+
                 <TransparentInput
                   onChangeText={props.handleChange("password")}
                   value={props.values.password}
@@ -92,16 +83,8 @@ const Register = () => {
                   touched={props.touched.password}
                   password
                 />
-                <TransparentInput
-                  onChangeText={props.handleChange("confirm_password")}
-                  value={props.values.confirm_password}
-                  label="confirm password"
-                  error={props.errors.confirm_password}
-                  onBlur={props.handleBlur("confirm_password")}
-                  touched={props.touched.confirm_password}
-                  password
-                />
-                <CTABtn text="register" f={props.handleSubmit} />
+
+                <CTABtn text="login" f={props.handleSubmit} />
               </>
             )}
           </Formik>
@@ -145,4 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Register;
+export default Login;

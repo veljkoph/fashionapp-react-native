@@ -7,6 +7,7 @@ import useVideos from "../hooks/videos/useVideos";
 import FashionLoader from "./Global/FashionLoader";
 import Error from "./Global/Error";
 import { Colors } from "../constants/colors";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 //pexels key 563492ad6f9170000100000146c3f93930a7407ea678dbcc8f1ad5de
 const data = [
   {
@@ -30,13 +31,13 @@ const data = [
 const Home = () => {
   const video = React.useRef(null);
   const [activeSlide, setActiveSlide] = React.useState(1);
-  const { height } = Dimensions.get("screen");
+  const { height } = Dimensions.get("window");
   const [status, setStatus] = React.useState({});
 
   const { data: videos, isLoading, error } = useVideos();
-  console.log(videos?.length);
-  if (error) return <Error />;
-  if (isLoading) return <FashionLoader />;
+
+  // if (error) return <Error />;
+  // if (isLoading) return <FashionLoader />;
   return (
     <Animated.View style={{ height: height }}>
       <ScrollView

@@ -10,6 +10,9 @@ import Register from "../screens/Auth/Register";
 import { TouchableOpacity } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Colors } from "../constants/colors";
+import ProfileStack from "./stacks/ProfileStack";
+import Login from "../screens/Auth/Login";
+import useAuth from "../hooks/auth/useAuth";
 
 const TabNavigator = createBottomTabNavigator();
 const StackNavigator = createNativeStackNavigator();
@@ -24,9 +27,10 @@ const TabStack = () => {
         tabBarInactiveTintColor: "#f5ebe0",
         tabBarShowLabel: false,
         tabBarStyle: {
-          height: 80,
+          // height: 70,
           position: "absolute",
-          backgroundColor: "#rgba(47, 47, 47, 0.75)",
+          backgroundColor: Colors.semiTransparent1,
+          shadowColor: "transparent",
         },
       }}
     >
@@ -90,7 +94,7 @@ const TabStack = () => {
       />
       <TabNavigator.Screen
         name="Profile"
-        component={Profile}
+        component={ProfileStack}
         options={({ navigation }) => ({
           title: "Profile",
           tabBarIcon: ({ focused, color, size }) => (
@@ -112,22 +116,37 @@ const TabStack = () => {
 };
 
 const Navigation = () => {
+  const { user } = useAuth();
   return (
     <NavigationContainer>
       <StackNavigator.Navigator
         screenOptions={{
           headerShown: false,
-          tabBarStyle: {
-            backgroundColor: "redr",
-          },
         }}
       >
-        <StackNavigator.Screen name="Onboarding" component={Onboarding} />
-        <StackNavigator.Screen
-          name="Registration"
-          component={RegistrationOptions}
-        />
-        <StackNavigator.Screen name="Register" component={Register} />
+        {!user && (
+          <>
+            <StackNavigator.Screen name="Onboarding" component={Onboarding} />
+            <StackNavigator.Screen
+              name="Registration"
+              component={RegistrationOptions}
+            />
+            <StackNavigator.Screen
+              name="Register"
+              component={Register}
+              options={{
+                animation: "slide_from_right",
+              }}
+            />
+            <StackNavigator.Screen
+              name="Login"
+              component={Login}
+              options={{
+                animation: "slide_from_right",
+              }}
+            />
+          </>
+        )}
         <StackNavigator.Screen name="App" component={TabStack} />
       </StackNavigator.Navigator>
     </NavigationContainer>

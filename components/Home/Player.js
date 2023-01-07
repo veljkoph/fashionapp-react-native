@@ -5,6 +5,7 @@ import Actions from "./Actions";
 import { Colors } from "../../constants/colors";
 import FashionLoader from "../../screens/Global/FashionLoader";
 import { LinearGradient } from "expo-linear-gradient";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const { width, height } = Dimensions.get("window");
 export const SLIDE_HEIGHT = height;
@@ -12,7 +13,7 @@ export const SLIDE_HEIGHT = height;
 const Player = ({ url, activeSlide, id, image, index, video }) => {
   const [status, setStatus] = React.useState({});
   const videoRef = React.useRef(null);
-
+  const insets = useSafeAreaInsets();
   const styles = StyleSheet.create({
     container: {
       width: width,
@@ -20,7 +21,7 @@ const Player = ({ url, activeSlide, id, image, index, video }) => {
       backgroundColor: Colors.background,
     },
   });
-  // if (!status?.isLoaded) return <FashionLoader />;
+
   return (
     <View style={styles.container}>
       <Video
@@ -32,7 +33,7 @@ const Player = ({ url, activeSlide, id, image, index, video }) => {
         useNativeControls={false}
         resizeMode="cover"
         isLooping
-        shouldPlay={activeSlide == index + 1}
+        shouldPlay={Math.round(activeSlide) == index + 1}
         onPlaybackStatusUpdate={(status) => setStatus(() => status)}
       />
       <LinearGradient

@@ -3,26 +3,23 @@ import React from "react";
 import { Colors } from "../../constants/colors";
 import Statistics from "./Statistics";
 
-const Header = () => {
+const Header = ({ user }) => {
   return (
     <View style={style.container}>
       <View style={style.profileInfo}>
         <View style={style.descriptionContainer}>
-          <Text style={style.username}>@larasoft</Text>
-          <Text style={style.description}>
-            Fashion is a form of self-expression and autonomy at a particular
-            period and place
-          </Text>
+          <Text style={style.username}>{user.username}</Text>
+          <Text style={style.description}>{user.description}</Text>
         </View>
         <Image
           style={style.profilePicture}
-          resizeMethod="cover"
+          resizeMode="cover"
           source={{
-            uri: "https://images.unsplash.com/photo-1546961329-78bef0414d7c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+            uri: user.image,
           }}
         />
       </View>
-      <Statistics />
+      <Statistics following={user.following} followers={user.followers} />
     </View>
   );
 };
@@ -32,7 +29,7 @@ const style = StyleSheet.create({
     paddingHorizontal: 20,
   },
   username: {
-    fontSize: 45,
+    fontSize: 40,
     fontFamily: "Cormorant-Bold",
     color: Colors.grayLight,
     letterSpacing: 1,
@@ -42,7 +39,7 @@ const style = StyleSheet.create({
     marginTop: 10,
     fontFamily: "Cabin-Regular",
     color: Colors.grayLight,
-    letterSpacing: 0.3,
+    letterSpacing: 0.2,
   },
   profileInfo: {
     flexDirection: "row",

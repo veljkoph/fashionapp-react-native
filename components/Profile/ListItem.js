@@ -10,7 +10,7 @@ const ListItem = ({ video }) => {
       <Image
         source={{ uri: video.uri }}
         style={style.thumbnail}
-        // resizeMode="cover"
+        resizeMode="cover"
       />
       <Image
         style={style.gradient}

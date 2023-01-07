@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { UserProvider } from "./context/UserContext";
 import Navigation from "./navigation/Navigation";
 
 export default function App() {
@@ -25,10 +26,12 @@ export default function App() {
     );
   return (
     <View style={styles.container}>
-      <StatusBar hidden />
-      <QueryClientProvider client={queryClient}>
-        <Navigation />
-      </QueryClientProvider>
+      <StatusBar style="light" />
+      <UserProvider>
+        <QueryClientProvider client={queryClient}>
+          <Navigation />
+        </QueryClientProvider>
+      </UserProvider>
     </View>
   );
 }

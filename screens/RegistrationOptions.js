@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     letterSpacing: 3,
-    marginTop: 20,
+    marginTop: 50,
     alignSelf: "flex-end",
     transform: [
       { rotate: "-90deg" },
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   socials: {
     alignSelf: "flex-end",
-    marginBottom: "10%",
+    marginBottom: "5%",
     width: "100%",
   },
 });

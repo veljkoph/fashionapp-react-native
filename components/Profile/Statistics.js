@@ -1,8 +1,10 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { Colors } from "../../constants/colors";
+import { useNavigation } from "@react-navigation/native";
 
-const Statistics = () => {
+const Statistics = ({ following, followers }) => {
+  const navigation = useNavigation();
   return (
     <View style={style.container}>
       <View style={[style.statContainer]}>
@@ -10,14 +12,17 @@ const Statistics = () => {
         <Text style={style.number}>11</Text>
       </View>
       <View style={style.line} />
-      <View style={style.statContainer}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("FollowingScreen")}
+        style={style.statContainer}
+      >
         <Text style={style.text}>Following</Text>
-        <Text style={style.number}>124</Text>
-      </View>
+        <Text style={style.number}>{following?.length}</Text>
+      </TouchableOpacity>
       <View style={style.line} />
       <View style={style.statContainer}>
         <Text style={style.text}>Followers</Text>
-        <Text style={style.number}>133</Text>
+        <Text style={style.number}>{followers?.length}</Text>
       </View>
     </View>
   );
@@ -45,7 +50,7 @@ const style = StyleSheet.create({
   },
   statContainer: {
     alignItems: "center",
-    flex: 0.2,
+    flex: 0.3,
   },
   line: {
     borderWidth: 0.5,
