@@ -19,7 +19,10 @@ const Header = ({ user }) => {
           }}
         />
       </View>
-      <Statistics following={user.following} followers={user.followers} />
+      <Statistics
+        following={user?.following?.length}
+        followers={user?.followers?.length}
+      />
     </View>
   );
 };

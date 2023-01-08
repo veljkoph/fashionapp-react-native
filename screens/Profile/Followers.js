@@ -8,6 +8,7 @@ import {
 import FollowingErs from "../../components/Profile/FollowingsErs";
 import HeaderWIthTitle from "../../components/Global/HeaderWIthTitle";
 import useFollowing from "../../hooks/profile/useFollowing";
+import useFollowers from "../../hooks/profile/useFollowers";
 
 const arr = [
   {
@@ -82,19 +83,19 @@ const arr = [
   },
 ];
 
-const Following = () => {
+const Followers = () => {
   const insets = useSafeAreaInsets();
 
-  const { data: following, isError, isLoading } = useFollowing();
+  const { data: folowers, isError, isLoading } = useFollowers();
   if (isLoading) return null;
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background }}>
-      <HeaderWIthTitle title={"Following"} />
+      <HeaderWIthTitle title={"Followers"} />
       <FlatList
         style={{ backgroundColor: Colors.background }}
         contentContainerStyle={{ paddingBottom: insets.bottom + 80 }}
-        data={following}
+        data={folowers}
         numColumns={1}
         renderItem={({ item, index }) => (
           <FollowingErs
@@ -109,4 +110,4 @@ const Following = () => {
   );
 };
 
-export default Following;
+export default Followers;

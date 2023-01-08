@@ -3,6 +3,7 @@ import React from "react";
 import Profile from "../../screens/Profile/Profile";
 import Following from "../../screens/Profile/Following";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Followers from "../../screens/Profile/Followers";
 const Stack = createNativeStackNavigator();
 
 const ProfileStack = () => {
@@ -16,6 +17,13 @@ const ProfileStack = () => {
       <Stack.Screen
         name="FollowingScreen"
         component={Following}
+        options={{
+          animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
+        name="FollowersScreen"
+        component={Followers}
         options={{
           animation: "slide_from_right",
         }}

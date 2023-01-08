@@ -25,6 +25,9 @@ const style = StyleSheet.create({
     justifyContent: "space-between",
     flexDirection: "row",
     alignItems: "center",
+    borderBottomWidth: 0.3,
+    borderBottomColor: Colors.grayLight,
+    paddingBottom: 20,
   },
   title: {
     fontSize: 40,

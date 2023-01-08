@@ -10,14 +10,15 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
 
   const auth = async (navigation) => {
+    const token = await AsyncStorage.getItem("token");
+    const userId = await AsyncStorage.getItem("id");
     try {
       const response = await axios.get(
-        `http://192.168.0.34:3000/auth/validateuser`,
+        `http://192.168.0.34:3000/auth/validateuser?id=${userId}`,
         {
-          params: {
-            token: await AsyncStorage.getItem("token"),
-            id: await AsyncStorage.getItem("id"),
-            r: 1,
+          headers: {
+            "Content-Type": "application/json",
+            authorization: token,
           },
         }
       );
@@ -31,7 +32,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     auth();
   }, []);
-  console.log(user, "USER");
+
   return (
     <UserContext.Provider
       value={{

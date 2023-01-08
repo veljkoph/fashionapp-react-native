@@ -2,9 +2,15 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { Colors } from "../../constants/colors";
 import { useNavigation } from "@react-navigation/native";
+import useFollowers from "../../hooks/profile/useFollowers";
+import useFollowing from "../../hooks/profile/useFollowing";
 
-const Statistics = ({ following, followers }) => {
+const Statistics = ({
+  following: followingLength,
+  followers: followersLenght,
+}) => {
   const navigation = useNavigation();
+
   return (
     <View style={style.container}>
       <View style={[style.statContainer]}>
@@ -17,13 +23,16 @@ const Statistics = ({ following, followers }) => {
         style={style.statContainer}
       >
         <Text style={style.text}>Following</Text>
-        <Text style={style.number}>{following?.length}</Text>
+        <Text style={style.number}>{followingLength}</Text>
       </TouchableOpacity>
       <View style={style.line} />
-      <View style={style.statContainer}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("FollowersScreen")}
+        style={style.statContainer}
+      >
         <Text style={style.text}>Followers</Text>
-        <Text style={style.number}>{followers?.length}</Text>
-      </View>
+        <Text style={style.number}>{followersLenght}</Text>
+      </TouchableOpacity>
     </View>
   );
 };

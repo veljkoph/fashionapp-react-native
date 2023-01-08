@@ -12,7 +12,14 @@ const FollowingErs = ({ username, image, following, index }) => {
       entering={FadeIn.duration(200 * index)}
     >
       <View style={style.imageusernameContainer}>
-        <Image source={{ uri: image }} style={style.img} resizeMode="cover" />
+        <Image
+          source={{ uri: image }}
+          style={[
+            style.img,
+            { borderWidth: image ? 0 : 1, borderColor: Colors.beige },
+          ]}
+          resizeMode="cover"
+        />
         <Text style={style.username}>{username}</Text>
       </View>
 

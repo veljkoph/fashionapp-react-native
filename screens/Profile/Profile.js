@@ -6,6 +6,7 @@ import ListItem from "../../components/Profile/ListItem";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import useAuth from "../../hooks/auth/useAuth";
 import RegistrationOptions from "../RegistrationOptions";
+import useFollowers from "../../hooks/profile/useFollowers";
 const videos = [
   {
     id: 1,
@@ -32,6 +33,7 @@ const videos = [
 const Profile = () => {
   const insets = useSafeAreaInsets();
   const { user } = useAuth();
+
   if (!user) return <RegistrationOptions />;
   return (
     <View
