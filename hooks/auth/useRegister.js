@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
-
+import { BASE_URL } from "@env";
 const postFunction = async (values) => {
-  const data = axios.post(`http://192.168.0.109:3000/auth/register`, values, {
+  const data = axios.post(`${BASE_URL}/auth/register`, values, {
     headers: {
       "Content-Type": "application/json",
       //  authorization: await AsyncStorage.getItem("token"),

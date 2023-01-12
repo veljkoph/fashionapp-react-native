@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
     const userId = await AsyncStorage.getItem("id");
     try {
       const response = await axios.get(
-        `http://192.168.0.34:3000/auth/validateuser?id=${userId}`,
+        `${BASE_URL}/auth/validateuser?id=${userId}`,
         {
           headers: {
             "Content-Type": "application/json",
