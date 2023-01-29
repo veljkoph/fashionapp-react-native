@@ -59,8 +59,11 @@ const Login = () => {
               username: "",
             }}
             onSubmit={(values) => {
-              console.log(values);
-              login(values);
+              const fixedValues = {
+                username: values.username.toLowerCase(),
+                password: values.password,
+              };
+              login(fixedValues);
             }}
           >
             {(props) => (

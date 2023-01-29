@@ -5,7 +5,6 @@ import Onboarding from "../screens/Onboarding";
 import RegistrationOptions from "../screens/RegistrationOptions";
 import Home from "../screens/Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Profile from "../screens/Profile/Profile";
 import Register from "../screens/Auth/Register";
 import { TouchableOpacity } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -56,7 +55,7 @@ const TabStack = () => {
       />
       <TabNavigator.Screen
         name="Search"
-        component={Profile}
+        component={ProfileStack}
         options={({ navigation }) => ({
           title: "Profile",
           tabBarIcon: ({ focused, color, size }) => (
@@ -75,7 +74,7 @@ const TabStack = () => {
       />
       <TabNavigator.Screen
         name="Chat"
-        component={Profile}
+        component={ProfileStack}
         options={({ navigation }) => ({
           title: "Chat",
           tabBarIcon: ({ focused, color, size }) => (

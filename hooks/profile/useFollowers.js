@@ -5,13 +5,13 @@ import useAuth from "../auth/useAuth";
 
 const fetchFunction = async (userID) => {
   const data = await axios.get(`${BASE_URL}/users/${userID}/followers`);
-  return data;
+  return data?.data;
 };
 
-const useFollowers = async () => {
-  const { user } = useAuth();
-  return useQuery([`followers/${user.id}`], () => fetchFunction(user.id), {
-    enabled: !!user?.id,
+const useFollowers = (userId) => {
+  console.log(userId, "userId followrs");
+  return useQuery([`followers/${userId}`], () => fetchFunction(userId), {
+    enabled: !!userId,
   });
 };
 

@@ -8,20 +8,21 @@ const Header = ({ user }) => {
     <View style={style.container}>
       <View style={style.profileInfo}>
         <View style={style.descriptionContainer}>
-          <Text style={style.username}>{user.username}</Text>
-          <Text style={style.description}>{user.description}</Text>
+          <Text style={style.username}>{user?.username}</Text>
+          <Text style={style.description}>{user?.description}</Text>
         </View>
         <Image
           style={style.profilePicture}
           resizeMode="cover"
           source={{
-            uri: user.image,
+            uri: user?.avatar,
           }}
         />
       </View>
       <Statistics
         following={user?.following?.length}
         followers={user?.followers?.length}
+        userId={user?._id}
       />
     </View>
   );

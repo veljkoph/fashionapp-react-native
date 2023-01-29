@@ -2,13 +2,20 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import React, { useState } from "react";
 import { Colors } from "../../constants/colors";
 import Animated, { FadeIn } from "react-native-reanimated";
+import { useNavigation } from "@react-navigation/native";
 
-const FollowingErs = ({ username, image, following, index }) => {
+const FollowingErs = ({ id, username, image, following, index }) => {
   const [isFollowing, setIsFollowing] = useState(following);
-
+  const navigation = useNavigation();
   return (
-    <Animated.View
+    <TouchableOpacity
       style={style.container}
+      onPress={() => {
+        navigation.navigate("UsersProfile", {
+          userId: id,
+          otherParam: "Hi",
+        });
+      }}
       entering={FadeIn.duration(200 * index)}
     >
       <View style={style.imageusernameContainer}>
@@ -31,7 +38,7 @@ const FollowingErs = ({ username, image, following, index }) => {
           {isFollowing ? "Following" : "Follow"}
         </Text>
       </TouchableOpacity>
-    </Animated.View>
+    </TouchableOpacity>
   );
 };
 const style = StyleSheet.create({

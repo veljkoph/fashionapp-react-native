@@ -1,9 +1,9 @@
-import { View, Text } from "react-native";
 import React from "react";
-import Profile from "../../screens/Profile/Profile";
+import MyProfile from "../../screens/Profile/MyProfile";
 import Following from "../../screens/Profile/Following";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Followers from "../../screens/Profile/Followers";
+import Profile from "../../screens/Profile/Profile";
 const Stack = createNativeStackNavigator();
 
 const ProfileStack = () => {
@@ -13,7 +13,8 @@ const ProfileStack = () => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="ProfileScreen" component={Profile} />
+      <Stack.Screen name="MyProfile" component={MyProfile} />
+      <Stack.Screen name="UsersProfile" component={Profile} />
       <Stack.Screen
         name="FollowingScreen"
         component={Following}
