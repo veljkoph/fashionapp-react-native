@@ -13,8 +13,20 @@ const ProfileStack = () => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="MyProfile" component={MyProfile} />
-      <Stack.Screen name="UsersProfile" component={Profile} />
+      <Stack.Screen
+        name="MyProfile"
+        options={{
+          animation: "none",
+        }}
+        component={MyProfile}
+      />
+      <Stack.Screen
+        options={{
+          animation: "none",
+        }}
+        name="UsersProfile"
+        component={Profile}
+      />
       <Stack.Screen
         name="FollowingScreen"
         component={Following}

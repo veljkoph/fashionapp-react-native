@@ -48,6 +48,7 @@ const MyProfile = () => {
         style={{ backgroundColor: Colors.background }}
         contentContainerStyle={{ paddingBottom: insets.bottom + 80 }}
         data={videos}
+        keyExtractor={(item, index) => index.toString()}
         numColumns={2}
         renderItem={({ item }) => <ListItem video={item} />}
       />

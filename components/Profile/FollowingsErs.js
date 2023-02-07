@@ -3,15 +3,24 @@ import React, { useState } from "react";
 import { Colors } from "../../constants/colors";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { useNavigation } from "@react-navigation/native";
+import useFollow from "../../hooks/profile/useFollow";
 
 const FollowingErs = ({ id, username, image, following, index }) => {
   const [isFollowing, setIsFollowing] = useState(following);
   const navigation = useNavigation();
+
+  const { mutate: follow, isError } = useFollow();
+
+  const followBtnHandler = () => {
+    follow(id);
+    setIsFollowing(!isFollowing);
+  };
+
   return (
     <TouchableOpacity
       style={style.container}
       onPress={() => {
-        navigation.navigate("UsersProfile", {
+        navigation.replace("UsersProfile", {
           userId: id,
           otherParam: "Hi",
         });
@@ -32,10 +41,10 @@ const FollowingErs = ({ id, username, image, following, index }) => {
 
       <TouchableOpacity
         style={style.followingBtn}
-        onPress={() => setIsFollowing(!isFollowing)}
+        onPress={() => followBtnHandler()}
       >
         <Text style={style.followingText}>
-          {isFollowing ? "Following" : "Follow"}
+          {/* {isFollowing ? "Following" : "Follow"} */} F
         </Text>
       </TouchableOpacity>
     </TouchableOpacity>

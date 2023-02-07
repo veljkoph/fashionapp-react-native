@@ -18,15 +18,16 @@ const Following = ({ route }) => {
     isLoading,
   } = useFollowing(route?.params?.userId);
   if (isError) return null;
-  console.log(following, "folowinf");
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background }}>
       <HeaderWIthTitle title={"Following"} />
       <FlatList
         style={{ backgroundColor: Colors.background }}
         contentContainerStyle={{ paddingBottom: insets.bottom + 80 }}
-        data={following}
+        data={Array.isArray(following) ? following : []}
         numColumns={1}
+        keyExtractor={(item, index) => item._id}
         renderItem={({ item, index }) => (
           <FollowingErs
             image={item?.avatar}

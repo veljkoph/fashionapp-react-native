@@ -31,26 +31,24 @@ const Login = () => {
         paddingTop: Platform.OS === "android" ? 45 : 0,
       }}
     >
+      {isLoading && <LoaderModal />}
       <HeaderWIthTitle title={isLoading ? "Loading" : "Login"} />
       <TouchableOpacity
         style={styles.switchBtn}
         onPress={() => navigation.navigate("Register")}
       >
         <Text style={styles.text}>
-          Dont have an account? <Text style={styles.underline}>Register</Text>
+          Dont have an account? <Text style={styles.cta}>Register</Text>
         </Text>
       </TouchableOpacity>
-
       <KeyboardAwareScrollView
-        contentContainerStyle={{ paddingTop: 60 }}
+        contentContainerStyle={{ paddingTop: 30 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         resetScrollToCoords={{ x: 0, y: 0 }}
         scrollEnabled={true}
         keyboardShouldPersistTaps="handled"
-        keyboardVerticalOffset={300}
+        keyboardVerticalOffset={330}
       >
-        {isLoading && <LoaderModal />}
-
         <ScrollView contentContainerStyle={styles.container}>
           <Formik
             validationSchema={LoginSchema}
@@ -60,7 +58,7 @@ const Login = () => {
             }}
             onSubmit={(values) => {
               const fixedValues = {
-                username: values.username.toLowerCase(),
+                username: values.username,
                 password: values.password,
               };
               login(fixedValues);
@@ -120,14 +118,15 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   text: {
-    fontSize: 18,
+    fontSize: 22,
     marginBottom: 8,
     color: Colors.beige,
     fontFamily: "Cormorant-Bold",
     textAlign: "left",
   },
-  underline: {
-    textDecorationLine: "underline",
+  cta: {
+    // textDecorationLine: "underline",
+    color: "#fff",
   },
 });
 

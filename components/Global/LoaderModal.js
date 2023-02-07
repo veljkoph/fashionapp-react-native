@@ -21,16 +21,18 @@ const LoaderModal = () => {
         position: "absolute",
         top: 0,
         zIndex: 10,
+        flex: 1,
       }}
     >
       <LottieView
-        speed={1}
+        speed={2.4}
         style={{
-          width: 100,
-          height: 100,
+          width: 80,
+          height: 80,
           zIndex: -10,
+          marginTop: 20,
         }}
-        source={require("../../assets/animations/wave.json")}
+        source={require("../../assets/animations/circle.json")}
         autoPlay={true}
         loop={true}
         ref={animation}

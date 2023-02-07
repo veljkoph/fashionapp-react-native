@@ -37,12 +37,12 @@ const Register = () => {
         onPress={() => navigation.navigate("Login")}
       >
         <Text style={styles.text}>
-          Have account? <Text style={styles.underline}>Login</Text>
+          Have account? <Text style={styles.cta}>Login</Text>
         </Text>
       </TouchableOpacity>
 
       <KeyboardAwareScrollView
-        contentContainerStyle={{ paddingTop: 30 }}
+        contentContainerStyle={{ paddingTop: 20 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         resetScrollToCoords={{ x: 0, y: 0 }}
         scrollEnabled={true}
@@ -61,7 +61,6 @@ const Register = () => {
               username: "",
             }}
             onSubmit={(values) => {
-              console.log(values);
               register(values);
             }}
           >
@@ -134,14 +133,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   text: {
-    fontSize: 18,
+    fontSize: 22,
     marginBottom: 8,
     color: Colors.beige,
     fontFamily: "Cormorant-Bold",
     textAlign: "left",
   },
-  underline: {
-    textDecorationLine: "underline",
+  cta: {
+    color: "white",
   },
 });
 

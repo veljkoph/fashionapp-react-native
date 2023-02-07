@@ -17,17 +17,18 @@ const Followers = ({ route }) => {
     isError,
     isLoading,
   } = useFollowers(route?.params?.userId);
-
+  //zbog navigacije se ne pusti novi zahtev
   if (isError) return null;
-  console.log(followers, "folowrs");
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background }}>
       <HeaderWIthTitle title={"Followers"} />
       <FlatList
         style={{ backgroundColor: Colors.background }}
         contentContainerStyle={{ paddingBottom: insets.bottom + 80 }}
-        data={followers}
+        data={Array.isArray(followers) ? followers : []}
         numColumns={1}
+        keyExtractor={(item, index) => item._id}
         renderItem={({ item, index }) => (
           <FollowingErs
             image={item.avatar}
